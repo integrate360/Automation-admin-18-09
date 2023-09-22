@@ -73,6 +73,8 @@ import NewHeaderAds from "./screens/Header Ads/NewHeaderAds";
 import AdsDetailsPage from "./screens/Ads/AdsDetailsPage";
 import AdsList from "./screens/Ads/AdsList";
 import HeaderAdsList from "./screens/Header Ads/HeaderAdsList";
+import NewBannerAds from "./screens/Banner/NewBannerAds";
+import BannerAdsList from "./screens/Banner/BannerAdsList";
 
 window.__DEV__ = true;
 
@@ -267,6 +269,11 @@ class App extends React.Component {
                   />
                   <Route
                     exact
+                    path={`${process.env.PUBLIC_URL}/newbannerads`}
+                    component={NewBannerAds}
+                  />
+                  <Route
+                    exact
                     path={`${process.env.PUBLIC_URL}/events/:eventId`}
                     component={EventsDetails}
                   />
@@ -289,6 +296,11 @@ class App extends React.Component {
                     exact
                     path={`${process.env.PUBLIC_URL}/headeradslist`}
                     component={HeaderAdsList}
+                  />
+                  <Route
+                    exact
+                    path={`${process.env.PUBLIC_URL}/banneradslist`}
+                    component={BannerAdsList}
                   />
                   <Route
                     exact

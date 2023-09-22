@@ -71,22 +71,25 @@ class NavbarMenu extends React.Component {
       activeKey === "/directorydetails"
     ) {
       this.activeMenutabContainer("DirectoryContainer");
-    }else if (
+    } else if (
       activeKey === "/newevents" ||
       activeKey === "/eventslist" ||
       activeKey === "/eventsdetails"
     ) {
       this.activeMenutabContainer("AdsContainer");
-    } 
+    }
     else if (
-      activeKey === "/newads" ||
-      activeKey === "/adslist" ||
-      activeKey === "/newheaderads" ||
-      activeKey === "/headeradslist" ||
-      activeKey === "/adsdetails"
+      activeKey === "/newevents" ||
+      activeKey === "/eventslist" ||
+      activeKey === "/eventsdetails"
     ) {
+      this.activeMenutabContainer("BannerContainer");
+    } else if (
+      activeKey === "/newbannerads" ||
+      activeKey === "/banneradslist"
+     ) {
       this.activeMenutabContainer("EventsContainer");
-    }else if (
+    } else if (
       activeKey === "/uitypography" ||
       activeKey === "/uitabs" ||
       activeKey === "/uibuttons" ||
@@ -435,7 +438,6 @@ class NavbarMenu extends React.Component {
         <div id="left-sidebar" className="sidebar" style={{ zIndex: 9 }}>
           <div className="sidebar-scroll">
             <div className="user-account">
-              
               <ul className="row list-unstyled">
                 <li className="col-4">
                   <small>Users</small>
@@ -686,7 +688,9 @@ class NavbarMenu extends React.Component {
                           <Link to="newdirectory">Add New Directory</Link>
                         </li>
                         <li
-                          className={activeKey === "directoryList" ? "active" : ""}
+                          className={
+                            activeKey === "directoryList" ? "active" : ""
+                          }
                           onClick={() => {}}
                         >
                           <Link to="directoryList">All Directories</Link>
@@ -726,9 +730,7 @@ class NavbarMenu extends React.Component {
                       </a>
                       <ul className="collapse">
                         <li
-                          className={
-                            activeKey === "newevents" ? "active" : ""
-                          }
+                          className={activeKey === "newevents" ? "active" : ""}
                         >
                           <Link to="newevents">Add New Events</Link>
                         </li>
@@ -975,11 +977,7 @@ class NavbarMenu extends React.Component {
                         <i className="icon-globe"></i> <span>Ads</span>
                       </a>
                       <ul className="collapse">
-                        <li
-                          className={
-                            activeKey === "newads" ? "active" : ""
-                          }
-                        >
+                        <li className={activeKey === "newads" ? "active" : ""}>
                           <Link to="newads">Add New Ads</Link>
                         </li>
                         <li
@@ -996,10 +994,41 @@ class NavbarMenu extends React.Component {
                           <Link to="newheaderads">Add New Header Ads</Link>
                         </li>
                         <li
-                          className={activeKey === "headeradslist" ? "active" : ""}
+                          className={
+                            activeKey === "headeradslist" ? "active" : ""
+                          }
                           onClick={() => {}}
                         >
                           <Link to="headeradslist">All Header Ads</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li id="BannerContainer" className="">
+                      <a
+                        href="#!"
+                        className="has-arrow"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          this.activeMenutabContainer("BannerContainer");
+                        }}
+                      >
+                        <i className="icon-globe"></i> <span>Banner</span>
+                      </a>
+                      <ul className="collapse">
+                        <li
+                          className={
+                            activeKey === "newbannerads" ? "active" : ""
+                          }
+                        >
+                          <Link to="newbannerads">Add New Banner</Link>
+                        </li>
+                        <li
+                          className={
+                            activeKey === "banneradslist" ? "active" : ""
+                          }
+                          onClick={() => {}}
+                        >
+                          <Link to="banneradslist">All Banners</Link>
                         </li>
                       </ul>
                     </li>

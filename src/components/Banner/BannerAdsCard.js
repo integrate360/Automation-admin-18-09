@@ -4,14 +4,13 @@ import ReactS3 from "react-s3";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
-class AdsCard extends React.Component {
+class BannerAdsCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       imageFile: null,
       link: "",
-      category: "Home Ads",
       imageUrl: "", 
     };
   }
@@ -53,28 +52,23 @@ class AdsCard extends React.Component {
       console.log(error);
     }
   };
-  handleCategoryChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
+  
   postData = async () => {
     try {
-      const { name, link, imageUrl, category } = this.state;
+      const { name, link, imageUrl } = this.state;
       const obj = {
         name,
         image: imageUrl,
         link,
-        category,
       };
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/mainads/create`,
+        `${process.env.REACT_APP_API_URL}/api/banner/create`,
         obj
       );
 
       if (response) {
-        this.props.history.push(`/ads/${response.data._id}`);
+        this.props.history.push("/banneradslist");
       } else {
         throw new Error("Mongo DB Upload Error");
       }
@@ -84,7 +78,7 @@ class AdsCard extends React.Component {
   };
 
   render() {
-    const { name, link, category, imageUrl } = this.state;
+    const { name, link } = this.state;
 
     return (
       <div className="card">
@@ -109,21 +103,7 @@ class AdsCard extends React.Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="category">Select Category</label>
-            <select
-              className="form-control"
-              id="category"
-              name="category"
-              value={category}
-              onChange={this.handleCategoryChange}
-            >
-              <option value="Home Ads">Home Ads</option>
-              <option value="Directory Ads">Directory Ads</option>
-              <option value="Featured Ads">Featured Ads</option>
-            </select>
-          </div>
-          {/* Add an input for image upload */}
+          
           <div className="form-group">
             <input
               type="file"
@@ -136,15 +116,6 @@ class AdsCard extends React.Component {
               Upload a file smaller than 100kb
             </medium>
           </div>
-
-          {/* Display the uploaded image */}
-          {imageUrl && (
-            <div className="form-group">
-              <img src={imageUrl} alt="Uploaded Image" width="269px" height="269px"/>
-            </div>
-          )}
-
-          {/* Implement buttons and form submission similar to EventsCard */}
           <button
             type="button"
             className="btn btn-block btn-danger m-t-20"
@@ -158,4 +129,4 @@ class AdsCard extends React.Component {
   }
 }
 
-export default withRouter(connect(null, {})(AdsCard));
+export default withRouter(connect(null, {})(BannerAdsCard));
