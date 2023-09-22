@@ -22,11 +22,11 @@ class EventsDetails extends React.Component {
       eventType: "",
       organiserName: "",
       organiserEmail: "",
+      organiser_number: "",
       venue: "",
       city: "",
       state: "",
       country: "",
-      metaDescription: "",
       metaKeywords: "",
       isLoading: true,
     };
@@ -47,7 +47,7 @@ class EventsDetails extends React.Component {
         this.setState({
           _id: eventsData._id,
           title: eventsData.title,
-          // file: eventsData.media,
+          file: eventsData.media,
           brief: eventsData.brief,
           website: eventsData.website,
           description: eventsData.description,
@@ -57,11 +57,11 @@ class EventsDetails extends React.Component {
           eventType: eventsData.eventType,
           organiserName: eventsData.organiserName,
           organiserEmail: eventsData.organiserEmail,
+          organiser_number: eventsData.organiser_number,
           venue: eventsData.venue,
           city: eventsData.city,
           state: eventsData.state,
           country: eventsData.country,
-          metaDescription: eventsData.metaDescription,
           metaKeywords: eventsData.metaKeywords,
           isLoading: false,
         });
@@ -75,7 +75,7 @@ class EventsDetails extends React.Component {
     const {
       _id,
       title,
-      // file,
+      file,
       brief,
       website,
       description,
@@ -85,11 +85,11 @@ class EventsDetails extends React.Component {
       eventType,
       organiserName,
       organiserEmail,
+      organiser_number,
       venue,
       city,
       state,
       country,
-      metaDescription,
       metaKeywords,
       isLoading,
     } = this.state;
@@ -119,7 +119,7 @@ class EventsDetails extends React.Component {
               <div className="row clearfix">
                 <div className="col-lg-8 col-md-12 left-box">
                   <EventsListCard
-                    // FileArray={file}
+                    FileArray={file}
                     title={title}
                     brief={brief}
                     eventId={_id}
@@ -134,8 +134,8 @@ class EventsDetails extends React.Component {
                     venue={venue}
                     city={city}
                     state={state}
+                    organiser_number={organiser_number}
                     country={country}
-                    metaDescription={metaDescription}
                     metaKeywords={metaKeywords}
                   />
                 </div>

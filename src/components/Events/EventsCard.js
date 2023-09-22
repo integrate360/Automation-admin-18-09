@@ -23,6 +23,7 @@ class EventsCard extends React.Component {
       eventType: "",
       organiserName: "",
       organiserEmail: "",
+      organiser_number: "",
       venue: "",
       city: "",
       state: "",
@@ -31,7 +32,6 @@ class EventsCard extends React.Component {
       metaKeywords: "",
     };
   }
-  
 
   postData = async () => {
     try {
@@ -49,6 +49,7 @@ class EventsCard extends React.Component {
         eventType,
         organiserName,
         organiserEmail,
+        organiser_number,
         venue,
         city,
         state,
@@ -112,6 +113,7 @@ class EventsCard extends React.Component {
           eventType,
           organiserName,
           organiserEmail,
+          organiser_number,
           venue,
           city,
           state,
@@ -157,7 +159,7 @@ class EventsCard extends React.Component {
 
   handleFileChange = async (event) => {
     const file = event.target.files[0];
-    
+
     if (this.isMediaFile(file)) {
       this.setState({ userFile: event.target.files });
     } else {
@@ -179,7 +181,7 @@ class EventsCard extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleDateChange = (name, date) => {
+    handleDateChange = (name, date) => {
     this.setState({ [name]: date });
   };
 
@@ -196,6 +198,7 @@ class EventsCard extends React.Component {
       eventType,
       organiserName,
       organiserEmail,
+      organiser_number,
       venue,
       city,
       state,
@@ -341,6 +344,16 @@ class EventsCard extends React.Component {
               placeholder="Enter Organiser Email"
               name="organiserEmail"
               value={organiserEmail}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="number"
+              className="form-control"
+              placeholder="Enter Organiser Number"
+              name="organiser_number"
+              value={organiser_number}
               onChange={this.handleInputChange}
             />
           </div>
